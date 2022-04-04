@@ -10,7 +10,7 @@
      </script>
   </head>
   <body>
-      <nav>Das Wetter in <select name="city" id="city" onchange="getWeatherForCity(this.value)">
+      <nav>Das Heroku Wetter in <select name="city" id="city" onchange="getWeatherForCity(this.value)">
           <option value="Bonn" <%- weatherData.name === 'Bonn' ? 'selected' : '' %>>Bonn</option>
           <option value="Duesseldorf" <%- weatherData.name === 'Düsseldorf' ? 'selected' : '' %>>Düsseldorf</option>
           <option value="Hamburg" <%- weatherData.name === 'Hamburg' ? 'selected' : '' %>>Hamburg</option>
