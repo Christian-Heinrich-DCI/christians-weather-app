@@ -31,21 +31,21 @@ const getWeather = async (city = "Berlin", units = "metric") => {
 
 app.get("/", async (req, res) => {
   console.log(req.query);
-  getWeather(req.query.city, req.query.units)
-    .then((data) => {
-      return res.render("home", {
-        test: "Hallo",
-        pageTitle: "Das Wetter von heute",
-        weatherData: data,
-        linkItems: navigation,
-      });
-    })
-    .catch((err) => {
-      return res
-        .status(500)
-        .render("error", { message: err.message, linkItems: navigation });
+  try {
+    const data = await getWeather(req.query.city, req.query.units);
+    return res.render("home", {
+      test: "Hallo",
+      pageTitle: "Das Wetter von heute",
+      weatherData: data,
+      linkItems: navigation,
     });
+  } catch (err) {
+    return res
+      .status(500)
+      .render("error", { message: err.message, linkItems: navigation });
+  }
 });
+
 app.get("/links", (req, res) => {
   const linkNav = [
     ...navigation,
@@ -56,6 +56,7 @@ app.get("/links", (req, res) => {
     linkItems: linkNav,
   });
 });
+
 app.get("/impressum", (req, res) => {
   res.render("impressum", {
     pageTitle: "Impressum",
@@ -64,5 +65,7 @@ app.get("/impressum", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(
+    `Example app listening on port ${port} -> http://localhost:${port}`
+  );
 });
