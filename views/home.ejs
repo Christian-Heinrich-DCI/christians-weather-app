@@ -1,0 +1,45 @@
+<html>
+ <head>
+     <title><%= pageTitle %></title>
+     <link rel="stylesheet" href="/css/styles.css"/>
+     <script>
+         function getWeatherForCity(city){
+             let url = `/?city=${city}`;
+             window.location.href = url;
+         }
+     </script>
+  </head>
+  <body>
+      <nav>Das Wetter in <select name="city" id="city" onchange="getWeatherForCity(this.value)">
+          <option value="Bonn" <%- weatherData.name === 'Bonn' ? 'selected' : '' %>>Bonn</option>
+          <option value="Duesseldorf" <%- weatherData.name === 'Düsseldorf' ? 'selected' : '' %>>Düsseldorf</option>
+          <option value="Hamburg" <%- weatherData.name === 'Hamburg' ? 'selected' : '' %>>Hamburg</option>
+          <option value="Frankfurt" <%- weatherData.name === 'Frankfurt' ? 'selected' : '' %>>Frankfurt</option>
+          <option value="Berlin" <%- weatherData.name === 'Berlin' ? 'selected' : '' %>>Berlin</option>
+          <option value="Leipzig" <%- weatherData.name === 'Leipzig' ? 'selected' : '' %>>Leipzig</option>
+          <option value="Freiburg" <%- weatherData.name === 'Freiburg' ? 'selected' : '' %>>Freiburg</option>
+          <option value="Muenchen" <%- weatherData.name === 'München' ? 'selected' : '' %>>München</option>
+          <option value="Koeln" <%- weatherData.name === 'Köln' ? 'selected' : '' %>>Köln</option>
+          <option value="Bremen" <%- weatherData.name === 'Bremen' ? 'selected' : '' %>>Bremen</option>
+          <option value="Stuttgart" <%- weatherData.name === 'Stuttgart' ? 'selected' : '' %>>Stuttgart</option>
+        </select></nav>
+    <main>
+     <h1>Das Wetter<%- weatherData.name !== '' ? ` in ${weatherData.name}` : '' %></h1>
+     <h1><%= test %></h1>
+     <div class="mainInfo">
+         <div class="wicon"><img src="<%=`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png` %>" alt="Icon"/><p class="subtitle"><%= weatherData.weather[0].description%></p></div>
+         <div><%= weatherData.main.temp %>°C
+            <div>min <%= weatherData.main.temp_min %>°C</div>
+            <div>max <%= weatherData.main.temp_max %>°C</div></div>
+         
+     </div>
+        
+    </main>
+    
+        <%- include("partials/navigation", linkItems) %>
+    
+  </div>
+ </body>
+</html>
+<!-- {"coord":{"lon":12.375,"lat":51.342},"weather":[{"id":803,"main":"Clouds","description":"Überwiegend bewölkt","icon":"04d"}],"base":"stations","main":{"temp":4.82,"feels_like":0.03,"temp_min":4.06,"temp_max":6.66,"pressure":1011,"humidity":43},"visibility":10000,"wind":{"speed":7.72,"deg":10},"clouds":{"all":75},"dt":1648898781,"sys":{"type":2,"id":18814,"country":"DE","sunrise":1648874640,"sunset":1648921434},"timezone":7200,"id":6548737,"name":"Leipzig","cod":200} -->
+

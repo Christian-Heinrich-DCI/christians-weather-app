@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1em;
+}
+h1 {
+  font-size: 1.5rem;
+}
+nav {
+  margin-top: 0px;
+  height: auto;
+  padding: 0.2rem;
+  background-color: #120349;
+  color: rgb(247, 239, 224);
+  font-weight: bold;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.2rem;
+  background-color: #7d7b85;
+  border-top: #120349 solid 1px;
+  text-align: right;
+}
+footer a:link,
+a:active,
+a:visited {
+  color: rgb(247, 239, 224);
+  text-decoration: none;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  margin-right: 0.5rem;
+}
+footer a:hover {
+  color: rgb(251, 250, 249);
+  text-decoration: underline;
+}
+.mainInfo {
+  display: flex;
+  padding: 10px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.subtitle {
+  font-size: smaller;
+}
